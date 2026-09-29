@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#2e69b2">
+  <title>Studyspace</title>
+  <script>try { const s = JSON.parse(localStorage.getItem('studyspace-theme') || 'null'); if (s === 'dark' || (!s && matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.dataset.theme = 'dark'; } catch {}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#" data-act="go" data-page="home"><b>✳</b> studyspace<span>.</span></a>
+    <nav>
+      <button class="nav" data-act="go" data-page="home"><span class="ico">⌂</span><span class="txt">Overview</span></button>
+      <button class="nav" data-act="go" data-page="classes"><span class="ico">▤</span><span class="txt">My classes</span></button>
+      <button class="nav" data-act="go" data-page="library"><span class="ico">▧</span><span class="txt">Study library</span></button>
+      <button class="nav" data-act="go" data-page="tests"><span class="ico">✎</span><span class="txt">Test center</span></button>
+      <button class="nav" data-act="go" data-page="mistakes"><span class="ico">⚑</span><span class="txt">Weak spots</span><span class="count hidden" id="mistakeCount"></span></button>
+      <button class="nav" data-act="go" data-page="tutor"><span class="ico">✦</span><span class="txt">AI tutor</span></button>
+      <button class="nav" data-act="go" data-page="planner"><span class="ico">◷</span><span class="txt">Planner</span></button>
+      <button class="nav" data-act="go" data-page="progress"><span class="ico">↗</span><span class="txt">Progress</span></button>
+      <button class="nav" data-act="go" data-page="settings"><span class="ico">⚙</span><span class="txt">Settings</span></button>
+    </nav>
+    <p class="label">YOUR CLASSES <button data-act="add-class" title="Add a class">＋</button></p>
+    <div id="classNav"></div>
+    <div class="side-bottom">
+      <div class="streak-card" id="streakCard"></div>
+      <div class="profile" data-act="go" data-page="settings" id="profileCard"></div>
+    </div>
+  </aside>
+  <main>
+    <header class="top">
+      <div class="crumb" id="breadcrumb">Your workspace</div>
+      <div class="top-actions">
+        <label class="search"><input id="globalSearch" type="search" placeholder="Search everything…" autocomplete="off"></label>
+        <button class="icon-btn" id="pomoBtn" data-act="pomo-toggle" title="Focus timer">⏱</button>
+        <button class="icon-btn" data-act="toggle-theme" title="Light / dark mode" id="themeBtn">☾</button>
+        <button class="primary" data-act="add-material">＋ Add material</button>
+      </div>
+    </header>
+    <div id="view"></div>
+  </main>
+  <div class="popover hidden" id="pomo"></div>
+  <dialog id="modal"><form method="dialog" id="modalForm" onsubmit="return false"><div id="modalContent"></div></form></dialog>
+  <input id="importFile" type="file" accept=".pdf,.docx,.pptx,.txt,.md,.csv,.png,.jpg,.jpeg,.webp,.bmp,.gif" multiple hidden>
+  <input id="restoreFile" type="file" accept=".json,application/json" hidden>
+  <input id="photoFile" type="file" accept="image/*" hidden>
+  <script src="app.js"></script>
+</body>
+</html>

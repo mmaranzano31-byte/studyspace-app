@@ -1,0 +1,9 @@
+{
+  "name": "studyspace",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@ai-sdk/google": "^4",
+    "ai": "^7.0.122"
+  }
+}
